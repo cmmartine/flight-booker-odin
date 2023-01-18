@@ -1,0 +1,15 @@
+<%= form_with(url: root_path, method: :get) do |f| %>
+    <label for='departure_airport_id'>From: </label>
+    <%= select_tag('departure_airport_id', options_for_select(@airport_options)) %>
+
+    <label for='arrival_airport_id'>To: </label>
+    <%= select_tag('arrival_airport_id', options_for_select(@airport_options)) %>
+
+    <label for='number_of_passengers'>Number of Passengers: </label>
+    <%= select_tag('number_of_passengers', options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4]])) %>
+
+    <label for='flight_date'>Date: </label>
+    <%= select_tag('flight_date', options_for_select(@flight_date_options)) %>
+
+    <%= f.submit "Search" %>
+<% end %>
