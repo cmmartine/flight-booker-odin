@@ -9,7 +9,7 @@
 <body>
   <h1>Available Flights</h1>
 
-  <%= form_with(model: @flight, method: :get) do |f| %>
+  <%= form_with(url: root_path, method: :get) do |f| %>
     <label for='departure_airport_id'>From: </label>
     <%= select_tag('departure_airport_id', options_for_select(@airport_options)) %>
 
@@ -21,6 +21,15 @@
 
     <label for='flight_date'>Date: </label>
     <%= select_tag('flight_date', options_for_select(@flight_date_options)) %>
+
+    <%= f.submit "Search" %>
   <% end %>
+
+    <% @searched_flights.each do |flight| %>
+      <p>Departing from: <%= flight.departure_airport_id %></p>
+      <p>Going to: <%= flight.arrival_airport_id %></p>
+      <p>Duration: <%= flight.duration %> hours</p>
+      <p>Date: <%= flight.date %></p>
+    <% end %>
 </body>
 </html>

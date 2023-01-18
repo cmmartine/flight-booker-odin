@@ -8,6 +8,10 @@
 Airport.create!([{ name: 'NYC' }, { name: 'JFK' }, { name: 'EWR' }])
 p "Created #{Airport.count} Airports"
 
-Flight.create!([{ departure_airport_id: 1, arrival_airport_id: 1, duration: 2.5, date: "2023-04-29" }, { departure_airport_id: 1, arrival_airport_id: 2, duration: 2.5, date: "2023-02-15" }])
-Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 1, duration: 2.5, date: "2023-03-14" }])
+Flight.create!([{ departure_airport_id: 1, arrival_airport_id: 3, duration: 2.5, date: '2023-01-28' }])
+Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 1, duration: 1.5, date: '2023-03-01' }])
+Flight.create!([{ departure_airport_id: 1, arrival_airport_id: 2, duration: 3, date: '2023-02-12' }])
+Flight.create!([{ departure_airport_id: 2, arrival_airport_id: 1, duration: 3, date: '2023-02-22' }])
+Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 2.5, date: '2023-03-01' }])
+Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 3, date: '2023-03-01' }])
 p "Created #{Flight.count} Flights"
