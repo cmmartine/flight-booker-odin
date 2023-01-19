@@ -1,9 +1,10 @@
-<%= form_with(url: root_path, method: :get) do |f| %>
+<%= form_with(url: new_booking_path, method: :get) do |f| %>
   <% if @searched_flights %>
     <% @searched_flights.each do |flight| %>
       <p>____________________</p>
       <label for='flight'>Choose this flight </label>
-      <%= f.radio_button(flight, params[:flight], checked: false) %>
+      <%= f.radio_button(:flight_id, flight.id, checked: false) %>
+      <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
 
       <p>Departing from: <%= flight.departure_airport_id %></p>
       <p>Going to: <%= flight.arrival_airport_id %></p>
@@ -13,19 +14,5 @@
       <p>____________________</p>
 
     <% end %>
-  <% else %>
-      <p>No results found</p>
-      <p>Please see below for all flights</p>
-      <p>____________________</p>
-      <% @flights.each do |flight| %>
-        <label for='flight'>Choose this flight </label>
-        <%= f.radio_button(flight, params[:flight], checked: false) %>
-        <p>Departing from: <%= flight.departure_airport_id %></p>
-        <p>Going to: <%= flight.arrival_airport_id %></p>
-        <p>Duration: <%= flight.duration %> hours</p>
-        <p>Date: <%= flight.date %></p>
-        <%= f.submit "Continue to Booking" %>
-        <p>____________________</p>
-      <% end %>
   <% end %>
 <% end %>

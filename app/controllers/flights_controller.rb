@@ -8,6 +8,7 @@ class FlightsController < ApplicationController
     departure_airport = params[:departure_airport_id]
     arrival_airport = params[:arrival_airport_id]
     date = params[:flight_date]
+    num_passengers = params[:number_of_passengers]
     @searched_flights = Flight.where(departure_airport_id: departure_airport, arrival_airport_id: arrival_airport, date: date).first(5)
   end
 end
