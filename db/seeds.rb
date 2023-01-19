@@ -15,3 +15,8 @@ Flight.create!([{ departure_airport_id: 2, arrival_airport_id: 1, duration: 3, d
 Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 2.5, date: '2023-03-01' }])
 Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 3, date: '2023-03-01' }])
 p "Created #{Flight.count} Flights"
+
+Booking.create!([{ flight_id: 1 }])
+
+Passenger.create!([{ name: 'John', email: 'john@email.com', booking_id: 1 }])
+Passenger.create!([{ name: 'Tiffany', email: 'tiffany@email.com', booking_id: 1 }])
