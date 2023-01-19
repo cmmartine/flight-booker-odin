@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Airport.create!([{ name: 'NYC' }, { name: 'JFK' }, { name: 'EWR' }])
+Airport.create!([{ name: 'NYC', id: 1 }, { name: 'JFK', id: 2 }, { name: 'EWR', id: 3 }])
 p "Created #{Airport.count} Airports"
 
 Flight.create!([{ departure_airport_id: 1, arrival_airport_id: 3, duration: 2.5, date: '2023-01-28' }])
@@ -15,8 +15,3 @@ Flight.create!([{ departure_airport_id: 2, arrival_airport_id: 1, duration: 3, d
 Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 2.5, date: '2023-03-01' }])
 Flight.create!([{ departure_airport_id: 3, arrival_airport_id: 2, duration: 3, date: '2023-03-01' }])
 p "Created #{Flight.count} Flights"
-
-Booking.create!([{ flight_id: 1 }])
-
-Passenger.create!([{ name: 'John', email: 'john@email.com', booking_id: 1 }])
-Passenger.create!([{ name: 'Tiffany', email: 'tiffany@email.com', booking_id: 1 }])

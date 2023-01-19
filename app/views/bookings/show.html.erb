@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Booking</title>
+  <title>Booking Information</title>
 </head>
 <body>
-  
+  <h2>Your Booking Information</h2>
+
+  <h4>Flight Information</h4>
+  <p>Departing from: <%= @booking.flight.departure_airport.name %></p>
+  <p>Going to: <%= @booking.flight.arrival_airport.name %></p>
+  <p>Date: <%= @booking.flight.date %></p>
+  <p>Flight duration: <%= @booking.flight.duration %> hours</p>
+
+  <h4>Passenger Information</h4>
+  <% @booking.passengers.each do |passenger| %>
+    <p><%= passenger.name %></p>
+    <p><%= passenger.email %></p>
+  <% end %>
+    
 </body>
 </html>

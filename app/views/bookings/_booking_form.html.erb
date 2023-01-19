@@ -1,0 +1,22 @@
+<%= form_for @booking do |f| %>
+  <h4>Flight Information</h4>
+  <p>Departing from: <%= @chosen_flight.departure_airport.name %></p>
+  <p>Going to: <%= @chosen_flight.arrival_airport.name %></p>
+  <p>Date: <%= @chosen_flight.date %></p>
+  <p>Flight Duration: <%= @chosen_flight.duration %> hours</p>
+  <%= f.hidden_field :flight_id, value: @chosen_flight.id %>
+  <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
+    
+  <h4>Passenger Information:</h4>
+  
+  <%= f.fields_for :passengers do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field :name%>
+    <%= p.label :email %>
+    <%= p.text_field :email %><br><br>
+    <%= hidden_field :booking_id, value: @booking.id %>
+  <% end%>
+  
+
+  <%= f.submit "Complete Booking" %>
+<% end %>
