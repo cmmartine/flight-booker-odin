@@ -13,12 +13,18 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
 
-    if @booking.save
-      redirect_to booking_path(@booking.id)
-      flash[:notice] = 'Booking successfully created.'
-    else
-      render :new, status: :unprocessable_entity
-      flash[:error] = 'Unable to create booking, please try again.'
+    respond_to do |format|
+
+      if @booking.save
+
+        PassengerMailer.with(booking: @booking).booking_email.deliver_now
+
+        format.html { redirect_to booking_path(@booking.id), notice: 'Booking successfully created.' }
+        format.json { render json: @booking, status: :created, location: @booking}
+      else
+        format.html { render action 'new' }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
     end
   end
 

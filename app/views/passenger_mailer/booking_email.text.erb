@@ -1,0 +1,14 @@
+Confirmed Booking
+
+  Flight Information
+
+  Departing from: <%= @booking.flight.departure_airport.name %>
+  Going to: <%= @booking.flight.arrival_airport.name %>
+  Date: <%= @booking.flight.date %>
+  Flight duration: <%= @booking.flight.duration %> hours
+
+  Passenger Information
+  <% @booking.passengers.each do |passenger| %>
+    <%= passenger.name %>
+    <%= passenger.email %>
+  <% end %>
