@@ -3,7 +3,7 @@
     <% @searched_flights.each do |flight| %>
       <p>____________________</p>
       <label for='flight'>Choose this flight </label>
-      <%= f.radio_button(:flight_id, flight.id, checked: false) %>
+      <%= f.radio_button(:flight_id, flight.id) %>
       <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
 
       <p>Departing from: <%= flight.departure_airport_id %></p>
